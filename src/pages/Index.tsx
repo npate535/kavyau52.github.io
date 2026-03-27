@@ -185,9 +185,7 @@ const Index = () => {
               From research to real-world impact.
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              I aim to bridge the gap between cutting-edge research and practical applications —
-              whether that's making quantum computing more accessible, deploying fair AI at scale,
-              or contributing to open-source tools that empower the next generation of builders.
+              Utilizing my AI and quantum computing background, I apply my technology skills in a business context, using my unique perspective, speaking and presentation skills, and experiences to manage projects from ideation to impact.
             </p>
           </AnimatedSection>
         </div>
