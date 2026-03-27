@@ -176,9 +176,7 @@ const Index = () => {
               Building technology that serves everyone.
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              I believe in creating AI systems that are transparent, equitable, and designed with human welfare at their core.
-              My work spans reducing bias in generative models, strengthening quantum error correction, and understanding
-              how AI persuades — all in service of a more trustworthy technological future.
+              My mission is to ensure the spread of responsible, transparent, and equitable technologies through both my research and professional work. As both an AI researcher and strategy consultant, I'm passionate about helping as many companies as possible implement AI in the best way, for both their platform and the general public.
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
@@ -187,9 +185,7 @@ const Index = () => {
               From research to real-world impact.
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              I aim to bridge the gap between cutting-edge research and practical applications —
-              whether that's making quantum computing more accessible, deploying fair AI at scale,
-              or contributing to open-source tools that empower the next generation of builders.
+              Utilizing my AI and quantum computing background, I apply my technology skills in a business context, using my unique perspective, speaking and presentation skills, and experiences to manage projects from ideation to impact.
             </p>
           </AnimatedSection>
         </div>
