@@ -176,9 +176,7 @@ const Index = () => {
               Building technology that serves everyone.
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              I believe in creating AI systems that are transparent, equitable, and designed with human welfare at their core.
-              My work spans reducing bias in generative models, strengthening quantum error correction, and understanding
-              how AI persuades — all in service of a more trustworthy technological future.
+              My mission is to ensure the spread of responsible, transparent, and equitable technologies through both my research and professional work. As both an AI researcher and strategy consultant, I'm passionate about helping as many companies as possible implement AI in the best way, for both their platform and the general public.
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
