@@ -11,7 +11,7 @@ const posts = [
     date: "March 2026",
     title: "Hackathon Season 2026: CandiDate & Squishy",
     excerpt:
-      "From winning Best for Chicago at the Google DeepMind Vibecoding Hackathon to placing 3rd at the Respan Hackathon — a look at two projects pushing the boundaries of ML and soft robotics.",
+      "Two months into 2026 and I'm so excited to already have two hackathon wins under my belt. Take a look at my projects CandiDate and Squishy!",
     tag: "Projects",
     image: candidateApp,
   },
