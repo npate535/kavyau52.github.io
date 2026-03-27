@@ -1,5 +1,8 @@
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import AnimatedSection from "@/components/AnimatedSection";
+import FloatingParticles from "@/components/FloatingParticles";
 
 const experiences = [
   {
@@ -91,117 +94,140 @@ const skills = {
 
 const Experience = () => {
   return (
-    <div className="min-h-screen pt-24 pb-20">
+    <div className="min-h-screen pt-24 pb-20 relative">
+      <FloatingParticles count={12} />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <p className="text-xs tracking-[0.2em] text-muted-foreground mb-4 uppercase">
-              Professional Background
-            </p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground">
-              Experience
-            </h1>
+        <AnimatedSection>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+            <div>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground mb-4 uppercase">
+                Professional Background
+              </p>
+              <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground">
+                Experience
+              </h1>
+            </div>
+            <motion.a
+              href="/Kavya_Uppal_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button variant="outline" className="gap-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-all">
+                <Download size={14} />
+                Download Resume
+              </Button>
+            </motion.a>
           </div>
-          <a href="/Kavya_Uppal_Resume.pdf" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" className="gap-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-all">
-              <Download size={14} />
-              Download Resume
-            </Button>
-          </a>
-        </div>
+        </AnimatedSection>
 
         {/* Education */}
-        <section className="mb-20">
-          <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">Education</p>
-          <div className="border-t border-border py-8">
-            <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground">
-              University of Illinois at Urbana–Champaign
-            </h3>
-            <p className="text-muted-foreground mt-2">
-              B.S. in Computer Science, James Scholar, Grainger College of Engineering — GPA: 3.8
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">Aug 2025 – May 2028 · Urbana, IL</p>
-          </div>
-        </section>
+        <AnimatedSection>
+          <section className="mb-20">
+            <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">Education</p>
+            <div className="border-t border-border py-8">
+              <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground">
+                University of Illinois at Urbana–Champaign
+              </h3>
+              <p className="text-muted-foreground mt-2">
+                B.S. in Computer Science, James Scholar, Grainger College of Engineering — GPA: 3.8
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">Aug 2025 – May 2028 · Urbana, IL</p>
+            </div>
+          </section>
+        </AnimatedSection>
 
         {/* Research Experience */}
         <section className="mb-20">
-          <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">
-            Research Experience
-          </p>
+          <AnimatedSection>
+            <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">
+              Research Experience
+            </p>
+          </AnimatedSection>
           <div className="space-y-0">
-            {experiences.map((exp) => (
-              <div key={exp.org} className="border-t border-border py-10 group">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-foreground">{exp.org}</h3>
-                    <p className="text-accent text-sm mt-1">{exp.role}</p>
+            {experiences.map((exp, i) => (
+              <AnimatedSection key={exp.org} delay={i * 0.1}>
+                <motion.div
+                  className="border-t border-border py-10 group"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
+                    <div>
+                      <h3 className="font-display text-xl font-semibold text-foreground">{exp.org}</h3>
+                      <p className="text-accent text-sm mt-1">{exp.role}</p>
+                    </div>
+                    <div className="text-sm text-muted-foreground text-right shrink-0">
+                      <p>{exp.dates}</p>
+                      <p>{exp.location}</p>
+                    </div>
                   </div>
-                  <div className="text-sm text-muted-foreground text-right shrink-0">
-                    <p>{exp.dates}</p>
-                    <p>{exp.location}</p>
-                  </div>
-                </div>
-                <ul className="space-y-2 mt-4">
-                  {exp.bullets.map((b, i) => (
-                    <li key={i} className="text-muted-foreground text-sm leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-accent/50 before:rounded-full">
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  <ul className="space-y-2 mt-4">
+                    {exp.bullets.map((b, j) => (
+                      <li key={j} className="text-muted-foreground text-sm leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-accent/50 before:rounded-full">
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </section>
 
         {/* Leadership */}
         <section className="mb-20">
-          <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">
-            Leadership & Extracurriculars
-          </p>
+          <AnimatedSection>
+            <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">
+              Leadership & Extracurriculars
+            </p>
+          </AnimatedSection>
           <div className="space-y-0">
-            {leadership.map((exp) => (
-              <div key={exp.org} className="border-t border-border py-8 group">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
-                  <div>
-                    <h3 className="font-display text-lg font-semibold text-foreground">{exp.org}</h3>
-                    <p className="text-accent text-sm mt-0.5">{exp.role}</p>
+            {leadership.map((exp, i) => (
+              <AnimatedSection key={exp.org} delay={i * 0.08}>
+                <motion.div
+                  className="border-t border-border py-8 group"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                    <div>
+                      <h3 className="font-display text-lg font-semibold text-foreground">{exp.org}</h3>
+                      <p className="text-accent text-sm mt-0.5">{exp.role}</p>
+                    </div>
+                    <p className="text-sm text-muted-foreground shrink-0">{exp.dates}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground shrink-0">{exp.dates}</p>
-                </div>
-                <ul className="space-y-1.5 mt-3">
-                  {exp.bullets.map((b, i) => (
-                    <li key={i} className="text-muted-foreground text-sm leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-accent/50 before:rounded-full">
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  <ul className="space-y-1.5 mt-3">
+                    {exp.bullets.map((b, j) => (
+                      <li key={j} className="text-muted-foreground text-sm leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-accent/50 before:rounded-full">
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </section>
 
         {/* Skills */}
-        <section>
-          <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">
-            Technical Skills
-          </p>
-          <div className="border-t border-border py-8 grid md:grid-cols-3 gap-8">
-            <div>
-              <p className="text-xs tracking-[0.15em] text-accent mb-2 uppercase">Languages</p>
-              <p className="text-muted-foreground text-sm">{skills.languages}</p>
+        <AnimatedSection>
+          <section>
+            <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">
+              Technical Skills
+            </p>
+            <div className="border-t border-border py-8 grid md:grid-cols-3 gap-8">
+              {Object.entries(skills).map(([key, val]) => (
+                <div key={key}>
+                  <p className="text-xs tracking-[0.15em] text-accent mb-2 uppercase">{key}</p>
+                  <p className="text-muted-foreground text-sm">{val}</p>
+                </div>
+              ))}
             </div>
-            <div>
-              <p className="text-xs tracking-[0.15em] text-accent mb-2 uppercase">Frameworks</p>
-              <p className="text-muted-foreground text-sm">{skills.frameworks}</p>
-            </div>
-            <div>
-              <p className="text-xs tracking-[0.15em] text-accent mb-2 uppercase">Tools</p>
-              <p className="text-muted-foreground text-sm">{skills.tools}</p>
-            </div>
-          </div>
-        </section>
+          </section>
+        </AnimatedSection>
       </div>
     </div>
   );

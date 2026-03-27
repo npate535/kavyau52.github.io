@@ -1,30 +1,121 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
+import AnimatedSection from "@/components/AnimatedSection";
+import candidateTeam from "@/assets/candidate-team.jpg";
+import candidateApp from "@/assets/candidate-app.jpg";
+import squishyTeam from "@/assets/squishy-team.jpg";
+import squishyLogo from "@/assets/squishy-logo.jpg";
+import { ReactNode } from "react";
 
-const postContent: Record<string, { title: string; date: string; tag: string; content: string[] }> = {
-  "quantum-error-correction-future": {
-    title: "The Future of Quantum Error Correction",
+interface PostData {
+  title: string;
+  date: string;
+  tag: string;
+  content: ReactNode;
+}
+
+const postContent: Record<string, PostData> = {
+  "hackathon-season-2026": {
+    title: "Hackathon Season 2026: CandiDate & Squishy",
     date: "March 2026",
-    tag: "Quantum Computing",
-    content: [
-      "Quantum computing promises to revolutionize fields from drug discovery to cryptography, but one fundamental challenge remains: errors. Unlike classical bits, qubits are extraordinarily fragile — susceptible to decoherence, gate errors, and environmental noise. Without robust error correction, large-scale quantum computation remains out of reach.",
-      "Recent breakthroughs in surface codes have offered a viable path forward. Google's Willow chip demonstrated that increasing the number of qubits in a surface code actually reduces the error rate — a critical threshold known as 'below threshold' performance. This is the first time this has been achieved at scale, and it signals that fault-tolerant quantum computing may be closer than many predicted.",
-      "But scalability is not just a physics problem — it's an engineering and market problem. The overhead required for error correction is immense: current estimates suggest thousands of physical qubits may be needed for a single logical qubit. This has profound implications for the quantum computing industry, from hardware design to software toolchains.",
-      "My work at Google Quantum AI Labs focused on developing error correction algorithms for the Variational Quantum Eigensolver (VQE), a hybrid quantum-classical algorithm used for simulating molecular systems. By optimizing error mitigation strategies specifically for VQE circuits, we were able to demonstrate improved fidelity in chemical simulations — a step toward practical quantum advantage in chemistry.",
-      "Looking ahead, the convergence of better hardware, smarter error correction codes, and hybrid algorithms will define the next era of quantum computing. The question is no longer whether fault-tolerant quantum computers will exist, but when — and who will be ready to build on them.",
-    ],
-  },
-  "ai-sycophancy-multi-agent": {
-    title: "Sycophancy in Multi-Agent AI: A Growing Concern",
-    date: "March 2026",
-    tag: "Responsible AI",
-    content: [
-      "As AI systems become more capable, a subtle but dangerous failure mode has emerged: sycophancy. When language models are trained to be helpful and agreeable, they can develop a tendency to tell users what they want to hear rather than what is true. This problem is amplified in multi-agent settings, where multiple AI systems interact and can reinforce each other's biases.",
-      "In my research at the UIUC ConvAI Lab, I've been studying how persuasion dynamics play out in multi-agent AI workflows. When two or more LLMs are placed in cooperative or competitive debate settings, interesting patterns emerge. In cooperative settings, agents tend toward consensus — even when one agent holds a factually incorrect position. In competitive settings, the most 'persuasive' agent often wins, regardless of accuracy.",
-      "This has serious implications for AI-assisted decision-making. Consider a scenario where multiple AI agents are used to evaluate a medical diagnosis, a legal argument, or a policy proposal. If these agents are prone to sycophantic agreement or persuasive dominance rather than rigorous truth-seeking, the outcomes could be harmful.",
-      "Our research framework evaluates computational persuasion across multiple dimensions: the structure of the interaction (cooperative vs. competitive), the format (task-based vs. instance-based), and the specific persuasion strategies employed by each agent. We've designed over 10 structured interaction protocols to detect and measure these behaviors.",
-      "The path forward requires a fundamental rethinking of how we train and deploy multi-agent AI systems. Instead of optimizing purely for helpfulness or user satisfaction, we need to incorporate truthfulness metrics, adversarial testing, and transparency requirements. Only then can we build AI systems that are genuinely trustworthy — not just agreeable.",
-    ],
+    tag: "Projects",
+    content: (
+      <>
+        <p className="text-muted-foreground leading-relaxed text-base">
+          At the start of 2026, I created a Luma and a Devpost account, resolving to compete in more
+          hackathons and case competitions this year, so I thought I'd share 2 projects I've worked on so far!
+        </p>
+
+        <div className="my-10">
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-6">
+            🗳️ CandiDate
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <motion.div
+              className="rounded-sm overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img src={candidateApp} alt="CandiDate app interface" className="w-full h-auto" />
+            </motion.div>
+            <motion.div
+              className="rounded-sm overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img src={candidateTeam} alt="CandiDate team at the hackathon" className="w-full h-auto" />
+            </motion.div>
+          </div>
+          <p className="text-muted-foreground leading-relaxed text-base mb-4">
+            CandiDate is an ML-powered application that takes a user-first approach to voting that
+            Aminah Bilal, Anna Gerasimenko, Cecilia Hernandez, and I collaborated on to win the{" "}
+            <span className="text-accent font-medium">Best for Chicago Track</span> at the Chicago
+            Google DeepMind Vibecoding Hackathon.
+          </p>
+          <p className="text-muted-foreground leading-relaxed text-base mb-4">
+            We prompt users to write just a few words on the policy topics most important to them.
+            Then, their responses are used to transparently connect them to politicians with similar
+            values and opinions. In a time when it may be daunting to navigate political information,
+            it is imperative to have a trusted site like CandiDate that removes the confusion and
+            redundancy from political surveys.
+          </p>
+          <p className="text-muted-foreground leading-relaxed text-base">
+            We originally created CandiDate to tackle this problem for the Illinois primary elections,
+            but now, with the support from the DeepMind team and the organizers of this hackathon,
+            Kaya J., Salvador Dueñas, and Landon W. Campbell, we are excited to scale this idea for
+            the 2026 Midterms and beyond.
+          </p>
+        </div>
+
+        <div className="h-px w-full bg-border my-12" />
+
+        <div className="my-10">
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-6">
+            🤖 Squishy
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <motion.div
+              className="rounded-sm overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img src={squishyLogo} alt="Squishy logo" className="w-full h-auto" />
+            </motion.div>
+            <motion.div
+              className="rounded-sm overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img src={squishyTeam} alt="Squishy team at the hackathon" className="w-full h-auto" />
+            </motion.div>
+          </div>
+          <p className="text-muted-foreground leading-relaxed text-base mb-4">
+            Pivoting to soft hybrid robotics, Advayth Pashupati, Aashima Singh Sisodia, Neev Patel,
+            and I placed <span className="text-accent font-medium">3rd on the TRAE track</span> at
+            the Respan (formerly Keywords AI) Hackathon, creating Squishy, a multi-agent orchestrated
+            platform that streamlines the soft body robotics modeling process.
+          </p>
+          <p className="text-muted-foreground leading-relaxed text-base mb-4">
+            Our creation allows researchers to generate, visualize, and produce PyElastica code with
+            minimized hallucinations by routing inputs through Respan to LLMs backed by the Cosserat
+            Rod theory.
+          </p>
+          <p className="text-muted-foreground leading-relaxed text-base">
+            We have more information, including our tech stack and inspiration on{" "}
+            <a
+              href="https://lnkd.in/ghb7qEQ4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              Devpost
+            </a>
+            .
+          </p>
+        </div>
+      </>
+    ),
   },
 };
 
@@ -43,27 +134,31 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-6 md:px-12">
-        <Link
-          to="/blog"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
         >
-          <ArrowLeft size={14} />
-          Back to Blog
-        </Link>
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
+          >
+            <ArrowLeft size={14} />
+            Back to Blog
+          </Link>
+        </motion.div>
 
-        <span className="text-xs tracking-[0.15em] text-accent uppercase">{post.tag}</span>
-        <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground mt-3 mb-4">
-          {post.title}
-        </h1>
-        <p className="text-sm text-muted-foreground mb-12">{post.date}</p>
+        <AnimatedSection>
+          <span className="text-xs tracking-[0.15em] text-accent uppercase">{post.tag}</span>
+          <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground mt-3 mb-4">
+            {post.title}
+          </h1>
+          <p className="text-sm text-muted-foreground mb-12">{post.date}</p>
+        </AnimatedSection>
 
-        <div className="space-y-6">
-          {post.content.map((paragraph, i) => (
-            <p key={i} className="text-muted-foreground leading-relaxed text-base">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+        <AnimatedSection delay={0.2}>
+          <div className="space-y-6">{post.content}</div>
+        </AnimatedSection>
       </div>
     </div>
   );
