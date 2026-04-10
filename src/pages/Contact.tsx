@@ -17,7 +17,7 @@ const Contact = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="max-w-xl">
           <AnimatedSection>
             <div className="space-y-10">
               <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
