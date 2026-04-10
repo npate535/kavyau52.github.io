@@ -17,7 +17,7 @@ const Contact = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="max-w-xl">
           <AnimatedSection>
             <div className="space-y-10">
               <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
@@ -55,67 +55,6 @@ const Contact = () => {
                 ))}
               </div>
             </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <motion.div
-              className="border border-border rounded-sm p-8 md:p-10 bg-card"
-              whileHover={{ borderColor: "hsl(45 100% 60% / 0.3)" }}
-              transition={{ duration: 0.3 }}
-            >
-              <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
-                Send a Message
-              </h2>
-              <form
-                className="space-y-5"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const form = e.target as HTMLFormElement;
-                  const name = (form.elements.namedItem("name") as HTMLInputElement).value;
-                  const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-                  const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
-                  window.location.href = `mailto:ukavya8@gmail.com?subject=Portfolio Contact from ${name}&body=${encodeURIComponent(message)}%0A%0AFrom: ${name} (${email})`;
-                }}
-              >
-                <div>
-                  <label className="text-xs tracking-[0.15em] text-muted-foreground uppercase mb-2 block">Name</label>
-                  <input
-                    name="name"
-                    required
-                    className="w-full bg-background border border-border rounded-sm px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs tracking-[0.15em] text-muted-foreground uppercase mb-2 block">Email</label>
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full bg-background border border-border rounded-sm px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs tracking-[0.15em] text-muted-foreground uppercase mb-2 block">Message</label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    className="w-full bg-background border border-border rounded-sm px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors resize-none"
-                    placeholder="Your message..."
-                  />
-                </div>
-                <motion.button
-                  type="submit"
-                  className="w-full bg-foreground text-background font-medium text-sm py-3 rounded-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Send Message
-                </motion.button>
-              </form>
-            </motion.div>
           </AnimatedSection>
         </div>
       </div>
